@@ -39,7 +39,7 @@ export class ContactAddEditComponent implements OnInit {
     Id: this.builder.control({ value: '', disabled: true }),
     FirstName: this.builder.control('', Validators.required),
     LastName: this.builder.control('', Validators.required),
-    EmailId: this.builder.control('', Validators.required)
+    EmailId: this.builder.control('',[Validators.required, Validators.email]),
   });
 
   SaveContact() {
