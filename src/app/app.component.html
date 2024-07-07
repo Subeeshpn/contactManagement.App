@@ -1,7 +1,51 @@
 <mat-toolbar color="primary">
-  <span>Contact Management Application</span>
+  <span>Contacts App</span>
   <span class="example-spacer>"></span>
-    <button mat-raised-button (click)="openAddEditContactForm()">
-    Add Contact
-  </button>
+  <!-- <button mat-raised-button (click)="openAddEditContactForm()"> -->
+  <!-- Add Contact
+  </button> -->
 </mat-toolbar>
+
+<div class="mat-elevation-z8">
+    <br>
+  <div>
+    <a mat-raised-button color="primary" (click)="openAddEditContactForm()"
+      > New </a
+    >
+  </div>
+  <br>
+  <table mat-table [dataSource]="contactdata" class="mat-elevation-z8">
+    <ng-container matColumnDef="contactid">
+      <th mat-header-cell *matHeaderCellDef>Contact ID</th>
+      <td mat-cell *matCellDef="let element">{{ element.ContactId }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="firstname">
+      <th mat-header-cell *matHeaderCellDef>First Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.FirstName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="lastname">
+      <th mat-header-cell *matHeaderCellDef>Last Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.LastName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="emailid">
+      <th mat-header-cell *matHeaderCellDef>Email ID</th>
+      <td mat-cell *matCellDef="let element">{{ element.EmailId }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef>Action</th>
+      <td mat-cell *matCellDef="let element">
+        <div>
+          <button mat-raised-button color="primary">Change</button> |
+          <button mat-raised-button color="accent">Delete</button>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayColums"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayColums"></tr>
+  </table>
+</div>
