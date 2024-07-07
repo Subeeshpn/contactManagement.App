@@ -16,7 +16,9 @@ import {MatTableModule} from '@angular/material/table';
 import { CommonModule } from "@angular/common";
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import {MatSortModule} from '@angular/material/sort'
 
 
 @NgModule({
@@ -25,6 +27,7 @@ import { MatInputModule } from '@angular/material/input';
     ContactAddEditComponent,
     ContactComponent
   ],
+  
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -37,7 +40,9 @@ import { MatInputModule } from '@angular/material/input';
     ReactiveFormsModule,
     MatTableModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatPaginatorModule,
+    MatSortModule
   
   ],
   providers: [],

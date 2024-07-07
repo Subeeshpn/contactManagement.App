@@ -23,14 +23,14 @@ export class ContactAddEditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    if (this.data.Id != '' && this.data.Id != null) {
-      this.api.GetContactById(this.data.Id).subscribe((response) => {
+    if (this.data.id != '' && this.data.id != null) {
+      this.api.GetContactById(this.data.id).subscribe((response) => {
         this.editdata = response;
         this.contactform.setValue({
           Id: this.editdata.id,
-          FirstName: this.editdata.firstname,
+          FirstName: this.editdata.FirstName,
           LastName: this.editdata.LastName,
-          EmailId: this.editdata.emailid,
+          EmailId: this.editdata.EmailId
         });
       });
     }
@@ -39,7 +39,7 @@ export class ContactAddEditComponent implements OnInit {
     Id: this.builder.control({ value: '', disabled: true }),
     FirstName: this.builder.control('', Validators.required),
     LastName: this.builder.control('', Validators.required),
-    EmailId: this.builder.control('', Validators.required),
+    EmailId: this.builder.control('', Validators.required)
   });
 
   SaveContact() {

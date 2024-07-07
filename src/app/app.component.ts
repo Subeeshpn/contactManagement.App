@@ -7,8 +7,10 @@ import { ContactAddEditComponent } from './contact-add-edit/contact-add-edit.com
 import { response } from 'express';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import {Sort, MatSortModule} from '@angular/material/sort';
 import { ContactapiService } from './service/contactapi.service';
 import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-root',
@@ -31,9 +33,10 @@ export class AppComponent implements OnInit {
   ];
 
   constructor(private _dailog: MatDialog, private api: ContactapiService) {}
-
+  @ViewChild(MatPaginator) _paginator!:MatPaginator;
+  @ViewChild(MatSort) _sort!:MatSort;
   contactdata!: Contactmodel[];
-
+  finaldata:any;
   openAddEditContactForm() {
     this._dailog.open(ContactAddEditComponent);
   }
@@ -55,6 +58,9 @@ export class AppComponent implements OnInit {
   LoadContacts() {
     this.api.GetAllContact().subscribe(response => {
       this.contactdata = response;
+      this.finaldata=new MatTableDataSource<Contactmodel>(this.contactdata);
+      this.finaldata.paginator=this._paginator;
+      this.finaldata.sort=this._sort;
       console.log(response);
     });
   }
