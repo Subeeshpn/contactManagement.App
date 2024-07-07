@@ -24,4 +24,22 @@ export class ContactapiService {
 
     return this.http.get<Contactmodel[]>(this.apiServer );
 }
+
+GetContactById(id:any):Observable<Contactmodel>{
+
+  return this.http.get<Contactmodel>(this.apiServer +'/'+ id);
+}
+
+CreateContact(contactdata:any){
+  return this.http.post(this.apiServer,contactdata);
+}
+
+UpdateContact(id:any,contactdata:any){
+  return this.http.put(this.apiServer + '/'+id,contactdata)
+}
+
+DeleteContactbyId(id:any){
+  return this.http.delete(this.apiServer +'/'+ id);
+}
+
 }

@@ -1,5 +1,5 @@
 export interface Contactmodel {
-    ContactId:number,
+    id:number,
     FirstName:string,
     LastName:string,
     EmailId:string
