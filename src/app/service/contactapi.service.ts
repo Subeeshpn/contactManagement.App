@@ -15,8 +15,8 @@ const httpOptionsPlain = {
   providedIn: 'root'
 })
 export class ContactapiService {
-
-  apiServer = "http://localhost:3000/contacts";
+ 
+  apiServer = "http://localhost:3000/contacts"; // Replace the api url 
 
   constructor(private http:HttpClient) { }
   
