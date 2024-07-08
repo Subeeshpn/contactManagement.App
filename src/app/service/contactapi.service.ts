@@ -5,13 +5,7 @@ import { Observable } from 'rxjs';
 import {HttpClientModule} from '@angular/common/http';
 import { catchError } from "rxjs/operators";
 
-const httpOptionsPlain = {
-  headers: new HttpHeaders({
-    'Accept': 'text/plain',
-    'Content-Type': 'text/plain'
-  }),
-  'responseType': 'text'
-};
+
 @Injectable({
   providedIn: 'root'
 })
@@ -43,4 +37,6 @@ DeleteContactbyId(id:any){
   return this.http.delete(this.apiServer +'/'+ id);
 }
 
+
 }
+
