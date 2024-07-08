@@ -10,7 +10,7 @@ import { MatSort } from '@angular/material/sort';
 import {Sort, MatSortModule} from '@angular/material/sort';
 import { ContactapiService } from './service/contactapi.service';
 import { HttpClient } from '@angular/common/http';
-
+import * as alertify from 'alertifyjs'
 
 @Component({
   selector: 'app-root',
@@ -29,7 +29,8 @@ export class AppComponent implements OnInit {
     'firstname',
     'lastname',
     'emailid',
-    'action',
+    'Edit',
+    'Delete'
   ];
 
   constructor(private _dailog: MatDialog, private api: ContactapiService) {}
@@ -43,7 +44,7 @@ export class AppComponent implements OnInit {
 
   Openpopup(id: any) {
     const _popup = this._dailog.open(ContactAddEditComponent, {
-      width: '500px',
+      width: '5000px',
       exitAnimationDuration: '1000ms',
       enterAnimationDuration: '1000ms',
       data: {
@@ -68,8 +69,12 @@ export class AppComponent implements OnInit {
     this.Openpopup(id);
   }
   DeleteContact(Id:any){
-    this.api.DeleteContactbyId(Id).subscribe(r=>{
-      this.LoadContacts();
-    });
+    alertify.confirm("Remove Company","do you want remove this company?",()=>{
+      this.api.DeleteContactbyId(Id).subscribe(r=>{
+        this.LoadContacts();
+      });
+    },function(){
+    
+    })
   }
 }

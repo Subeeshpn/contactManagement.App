@@ -6,7 +6,7 @@ import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { response } from 'express';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
-
+import * as alertify from 'alertifyjs';
 
 @Component({
   selector: 'app-contact-add-edit',
@@ -30,7 +30,7 @@ export class ContactAddEditComponent implements OnInit {
           Id: this.editdata.id,
           FirstName: this.editdata.FirstName,
           LastName: this.editdata.LastName,
-          EmailId: this.editdata.EmailId
+          EmailId: this.editdata.EmailId,
         });
       });
     }
@@ -39,7 +39,7 @@ export class ContactAddEditComponent implements OnInit {
     Id: this.builder.control({ value: '', disabled: true }),
     FirstName: this.builder.control('', Validators.required),
     LastName: this.builder.control('', Validators.required),
-    EmailId: this.builder.control('',[Validators.required, Validators.email]),
+    EmailId: this.builder.control('', [Validators.required, Validators.email]),
   });
 
   SaveContact() {
@@ -47,14 +47,16 @@ export class ContactAddEditComponent implements OnInit {
     if (this.contactform.valid) {
       const Editid = this.contactform.getRawValue().Id;
       if (Editid != '' && Editid != null) {
-        this.api.UpdateContact(Editid, this.contactform.getRawValue()).subscribe((response) => {
+        this.api
+          .UpdateContact(Editid, this.contactform.getRawValue())
+          .subscribe((response) => {
             this.closepopup();
-            alert('updated successfully');
+            alertify.success('updated successfully');
           });
       } else {
         this.api.CreateContact(this.contactform.value).subscribe((response) => {
           this.closepopup();
-          alert('Saved successfully');
+          alertify.success('Saved successfully');
         });
       }
     }

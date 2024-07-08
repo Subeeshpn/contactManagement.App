@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Contactmodel } from '../Model/contactmodel';
-import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { HttpClient,HttpHeaders,HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {HttpClientModule} from '@angular/common/http';
+import { catchError } from "rxjs/operators";
 
 const httpOptionsPlain = {
   headers: new HttpHeaders({
@@ -27,7 +28,7 @@ export class ContactapiService {
 
 GetContactById(id:any):Observable<Contactmodel>{
 
-  return this.http.get<Contactmodel>(this.apiServer +'/'+ id);
+  return this.http.get<Contactmodel>(this.apiServer +'/'+ id)
 }
 
 CreateContact(contactdata:any){
