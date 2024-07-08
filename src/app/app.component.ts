@@ -70,9 +70,9 @@ export class AppComponent implements OnInit {
   EditContct(id:any){
     this.Openpopup(id);
   }
-  DeleteContact(Id:any){
+  DeleteContact(id:any){
     alertify.confirm("Remove Company","do you want remove this company?",()=>{
-      this.api.DeleteContactbyId(Id).subscribe(r=>{
+      this.api.DeleteContactbyId(id).subscribe(r=>{
         this.LoadContacts();
       });
     },function(){

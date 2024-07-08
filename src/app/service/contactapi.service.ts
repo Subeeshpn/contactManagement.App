@@ -12,8 +12,9 @@ import { catchError } from "rxjs/operators";
 })
 export class ContactapiService {
  
-  apiServer = "http://localhost:3000/contacts"; // Replace the api url 
+  //apiServer = "http://localhost:3000/contacts"; // Replace the api /url json.server
 
+  apiServer ="http://localhost:5073/api/GetAllContacts";
   constructor(private http:HttpClient) { }
   
   GetAllContact():Observable<Contactmodel[]>{

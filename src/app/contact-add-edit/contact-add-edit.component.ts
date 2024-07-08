@@ -28,18 +28,18 @@ export class ContactAddEditComponent implements OnInit {
         this.editdata = response;
         this.contactform.setValue({
           id: this.editdata.id,
-          FirstName: this.editdata.FirstName,
-          LastName: this.editdata.LastName,
-          EmailId: this.editdata.EmailId,
+          firstname: this.editdata.firstname,
+          lastname: this.editdata.lastname,
+          emailid: this.editdata.emailid,
         });
       });
     }
   }
   contactform = this.builder.group({
     id: this.builder.control({ value: '', disabled: true }),
-    FirstName: this.builder.control('', Validators.required),
-    LastName: this.builder.control('', Validators.required),
-    EmailId: this.builder.control('', [Validators.required, Validators.email]),
+    firstname: this.builder.control('', Validators.required),
+    lastname: this.builder.control('', Validators.required),
+    emailid: this.builder.control('', [Validators.required, Validators.email]),
   });
 
   SaveContact() {
