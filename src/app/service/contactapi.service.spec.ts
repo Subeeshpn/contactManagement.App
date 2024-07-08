@@ -15,14 +15,14 @@ describe('CustomersService', () => {
   let fakeContact: Contactmodel[] = [
     {
       id: 1,
-      FirstName: "Fake Customer",
-      LastName: "Fake Customer",
+      FirstName: "Fake Contact",
+      LastName: "Fake Contact",
       EmailId: "fake@fake.com"
     },
     {
-      id: 1,
-      FirstName: "Fake Customer2",
-      LastName: "Fake Customer22",
+      id: 2,
+      FirstName: "Fake Contact2",
+      LastName: "Fake Contact2",
       EmailId: "fake1@fake.com"
     }
   ];

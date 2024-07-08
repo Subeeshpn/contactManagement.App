@@ -2,7 +2,7 @@
 import { Component, Inject, OnInit, inject } from '@angular/core';
 import { EmailValidator, FormBuilder, Validators } from '@angular/forms';
 import { ContactapiService } from '../service/contactapi.service';
-import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { response } from 'express';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -27,7 +27,7 @@ export class ContactAddEditComponent implements OnInit {
       this.api.GetContactById(this.data.id).subscribe((response) => {
         this.editdata = response;
         this.contactform.setValue({
-          Id: this.editdata.id,
+          id: this.editdata.id,
           FirstName: this.editdata.FirstName,
           LastName: this.editdata.LastName,
           EmailId: this.editdata.EmailId,
@@ -36,7 +36,7 @@ export class ContactAddEditComponent implements OnInit {
     }
   }
   contactform = this.builder.group({
-    Id: this.builder.control({ value: '', disabled: true }),
+    id: this.builder.control({ value: '', disabled: true }),
     FirstName: this.builder.control('', Validators.required),
     LastName: this.builder.control('', Validators.required),
     EmailId: this.builder.control('', [Validators.required, Validators.email]),
@@ -45,7 +45,7 @@ export class ContactAddEditComponent implements OnInit {
   SaveContact() {
     //alert('SaveContact');
     if (this.contactform.valid) {
-      const Editid = this.contactform.getRawValue().Id;
+      const Editid = this.contactform.getRawValue().id;
       if (Editid != '' && Editid != null) {
         this.api
           .UpdateContact(Editid, this.contactform.getRawValue())

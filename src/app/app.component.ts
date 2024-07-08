@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
   }
 
   displayColums: string[] = [
-    'Id',
+    'id',
     'firstname',
     'lastname',
     'emailid',
@@ -39,12 +39,14 @@ export class AppComponent implements OnInit {
   contactdata!: Contactmodel[];
   finaldata:any;
   openAddEditContactForm() {
-    this._dailog.open(ContactAddEditComponent);
+    this._dailog.open(ContactAddEditComponent, {
+      panelClass: 'my-class'
+  });
   }
 
   Openpopup(id: any) {
     const _popup = this._dailog.open(ContactAddEditComponent, {
-      width: '5000px',
+      width:'400px',
       exitAnimationDuration: '1000ms',
       enterAnimationDuration: '1000ms',
       data: {

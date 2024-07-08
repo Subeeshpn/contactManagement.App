@@ -19,6 +19,7 @@ import { MatInputModule } from '@angular/material/input';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import {MatSortModule} from '@angular/material/sort'
+import { throwError } from 'rxjs';
 
 
 @NgModule({
