@@ -1,0 +1,35 @@
+
+
+import { Injectable } from '@angular/core';
+import {
+  HttpRequest,
+  HttpHandler,
+  HttpEvent,
+  HttpInterceptor,
+  HttpErrorResponse
+} from '@angular/common/http';
+import { Observable, catchError, throwError } from 'rxjs';
+
+@Injectable()
+
+export class HandleErrorsInterceptor implements HttpInterceptor {
+
+    constructor() { }
+  
+    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+      // req=req.clone({headers:req.headers.set("Auth","Bearer"+token)})
+  
+      return next.handle(req).pipe(
+        catchError(
+          (err: HttpErrorResponse|Error)=>{
+            if (err instanceof HttpErrorResponse){
+              console.error('Server side error'+err);
+            } else {
+              console.error('Not a httpErrorResponse'+err);
+            }
+            return throwError(() => err);
+          }
+       )
+      );
+    }
+  }
