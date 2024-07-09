@@ -28,6 +28,7 @@ export class ContactAddEditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    
     if (this.data.id != '' && this.data.id != null) {
       this.api.GetContactById(this.data.id).subscribe((response) => {
         this.editdata = response;
@@ -48,6 +49,7 @@ export class ContactAddEditComponent implements OnInit {
   });
 
   SaveContact() {
+    
     //alert('SaveContact');
     if (this.contactform.valid) {
       const Editid = this.contactform.getRawValue().id;
@@ -59,13 +61,15 @@ export class ContactAddEditComponent implements OnInit {
             alertify.success('updated successfully');
           });
       } else {
-        this.api.CreateContact(this.contactform.value).subscribe((response) => {
+        this.api
+        .CreateContact(this.contactform.value)
+        .subscribe((response) => {
           this.closepopup();
-          alertify.success('Saved successfully');
+          alertify.success('saved successfully');
         });
       }
     }
-  }
+   }
 
   closepopup() {
     this.dialog.closeAll();

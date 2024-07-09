@@ -7,10 +7,10 @@ import { ContactAddEditComponent } from './contact-add-edit/contact-add-edit.com
 import { response } from 'express';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import {Sort, MatSortModule} from '@angular/material/sort';
+import { Sort, MatSortModule } from '@angular/material/sort';
 import { ContactapiService } from './service/contactapi.service';
 import { HttpClient } from '@angular/common/http';
-import * as alertify from 'alertifyjs'
+import * as alertify from 'alertifyjs';
 import { Inject } from '@angular/core';
 
 @Component({
@@ -31,53 +31,57 @@ export class AppComponent implements OnInit {
     'lastname',
     'emailid',
     'Edit',
-    'Delete'
+    'Delete',
   ];
 
   constructor(private _dailog: MatDialog, private api: ContactapiService) {}
-  @ViewChild(MatPaginator) _paginator!:MatPaginator;
-  @ViewChild(MatSort) _sort!:MatSort;
+  @ViewChild(MatPaginator) _paginator!: MatPaginator;
+  @ViewChild(MatSort) _sort!: MatSort;
   contactdata!: Contactmodel[];
-  finaldata:any;
+  finaldata: any;
   openAddEditContactForm() {
     this._dailog.open(ContactAddEditComponent, {
-      panelClass: 'my-class'
-  });
+      panelClass: 'my-class',
+    });
   }
 
   Openpopup(id: any) {
     const _popup = this._dailog.open(ContactAddEditComponent, {
-      width:'400px',
+      width: '400px',
       exitAnimationDuration: '1000ms',
       enterAnimationDuration: '1000ms',
       data: {
         id: id,
       },
-    })
-    _popup.afterClosed().subscribe(r=>{
+    });
+    _popup.afterClosed().subscribe((r) => {
+      alert("afterClosed()");
       this.LoadContacts();
     });
   }
 
   LoadContacts() {
-    this.api.GetAllContact().subscribe(response => {
+    this.api.GetAllContact().subscribe((response) => {
       this.contactdata = response;
-      this.finaldata=new MatTableDataSource<Contactmodel>(this.contactdata);
-      this.finaldata.paginator=this._paginator;
-      this.finaldata.sort=this._sort;
+      this.finaldata = new MatTableDataSource<Contactmodel>(this.contactdata);
+      this.finaldata.paginator = this._paginator;
+      this.finaldata.sort = this._sort;
       console.log(response);
     });
   }
-  EditContct(id:any){
+  EditContct(id: any) {
     this.Openpopup(id);
   }
-  DeleteContact(id:any){
-    alertify.confirm("Remove Company","do you want remove this company?",()=>{
-      this.api.DeleteContactbyId(id).subscribe(r=>{
-        this.LoadContacts();
-      });
-    },function(){
-    
-    })
+  DeleteContact(id: any) {
+    alertify.confirm(
+      'Remove Company',
+      'do you want remove this company?',
+      () => {
+        this.api.DeleteContactbyId(id).subscribe((r) => {
+          this.LoadContacts();
+        });
+      },
+      function () {}
+    );
   }
 }
