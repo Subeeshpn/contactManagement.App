@@ -2,7 +2,12 @@
 import { Component, Inject, OnInit, inject } from '@angular/core';
 import { EmailValidator, FormBuilder, Validators } from '@angular/forms';
 import { ContactapiService } from '../service/contactapi.service';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
+import {
+  MAT_DIALOG_DATA,
+  MatDialog,
+  MatDialogConfig,
+  MatDialogRef,
+} from '@angular/material/dialog';
 import { response } from 'express';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';

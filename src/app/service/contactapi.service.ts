@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Contactmodel } from '../Model/contactmodel';
 import { HttpClient,HttpHeaders,HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError} from 'rxjs';
+import { Observable} from 'rxjs';
 import {HttpClientModule} from '@angular/common/http';
 import { catchError } from "rxjs/operators";
-
+import { throwError } from 'rxjs';
 
 
 @Injectable({
@@ -12,14 +12,21 @@ import { catchError } from "rxjs/operators";
 })
 export class ContactapiService {
  
-  //apiServer = "http://localhost:3000/contacts"; // Replace the api /url json.server
+  
 
-  apiServer ="http://localhost:5073/api/GetAllContacts";
-  constructor(private http:HttpClient) { }
+  private apiUrl ="http://localhost:5073/api";
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
+  constructor(private http:HttpClient) { } 
+  
+
   
   GetAllContact():Observable<Contactmodel[]>{
 
-    return this.http.get<Contactmodel[]>(this.apiServer )
+    return this.http.get<Contactmodel[]>(this.apiUrl + '/GetAllContacts' )
     .pipe(
       catchError(this.errorHandler)
     )
@@ -27,28 +34,28 @@ export class ContactapiService {
 
 GetContactById(id:any):Observable<Contactmodel>{
 
-  return this.http.get<Contactmodel>(this.apiServer +'/'+ id)
+  return this.http.get<Contactmodel>(this.apiUrl +'/Contact/' + id, this.httpOptions)
   .pipe(
     catchError(this.errorHandler)
   )
 }
 
 CreateContact(contactdata:any){
-  return this.http.post(this.apiServer,contactdata)
+  return this.http.post(this.apiUrl + '/Contact',JSON.stringify(contactdata),this.httpOptions)
   .pipe(
     catchError(this.errorHandler)
   )
 }
 
 UpdateContact(id:any,contactdata:any){
-  return this.http.put(this.apiServer + '/'+id,contactdata)
+  return this.http.put(this.apiUrl + '/Contact/'+id,JSON.stringify(contactdata),this.httpOptions)
   .pipe(
     catchError(this.errorHandler)
   )
 }
 
 DeleteContactbyId(id:any){
-  return this.http.delete(this.apiServer +'/'+ id) .pipe(
+  return this.http.delete(this.apiUrl + '/Contact/' + id, this.httpOptions).pipe(
     catchError(this.errorHandler)
   )
 }
