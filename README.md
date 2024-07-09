@@ -25,9 +25,19 @@ This api's can improve with unit of work, generic repository. But as of now no s
 angular front end application : crud operations with paging and sorting implemented used angular materal ui for designing the fronend.  But still filtering , input/output/state management not applied. But i not followed input/output/state management Contact's app designed with apiservices, components, modules, material ui, 
 jasmin , karma, used for angulr fronend unit testing.
 Database is using json file :assumption is database has contact details available. I mean empty scenarios not handled.
-Unit testing both Api and front end  but not covered all scenariosMS test. Mock, Autofixure used for api repository testing Integration test not implemented.Branching strategy main branch and development branch.Api unit test:
+Unit testing both Api and front end  but not covered all scenarios
+MS test. Mock, Autofixure used for api repository testing Integration test not implemented.
+Branching strategy main branch and development branch.Api unit test:
 Functionalities competed:
-Add new contactLoad all contactLoad Contact by idUpdate contactDelete contactSorting contact detailsPaging contact detailsAlert messages
+Add new contact
+Load all contact
+Load Contact by id
+Update contact
+Delete contact
+Sorting contact details
+Paging contact details
+Alert messages
+Global Exception messages from angular app
 
 
 How to run the application.Downoad the source code from github url. https://github.com/SubeeshpnContact app , fron ent application open in visual studio code 2022 run in broswerContact api project open in visual studio 2022. Load all api in swagger ui.  copy the api address from swagger url like http://localhost:5073/. then paste it in front end angular project. contactapi. service. Location of service  is app/service/contactapi.service.
