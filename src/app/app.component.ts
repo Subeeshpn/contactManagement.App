@@ -12,7 +12,7 @@ import { ContactapiService } from './service/contactapi.service';
 import { HttpClient } from '@angular/common/http';
 import * as alertify from 'alertifyjs';
 import { Inject } from '@angular/core';
-
+import {MatCardModule} from '@angular/material/card';
 
 @Component({
   selector: 'app-root',

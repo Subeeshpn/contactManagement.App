@@ -1,15 +1,16 @@
+<mat-toolbar>
+  <span>Contacts Application</span>
+</mat-toolbar>
 
-
-
-
+  <br />
   <div>
     <a mat-raised-button color="primary" (click)="openAddEditContactForm()">
       New
     </a>
   </div>
- 
-  
-  <table mat-table [dataSource]="finaldata" matSort  class="table">
+  <br />
+
+  <table mat-table [dataSource]="finaldata" matSort class="mat-elevation-z8">
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>id</th>
       <td mat-cell *matCellDef="let element">{{ element.id }}</td>
@@ -68,5 +69,4 @@
     aria-label="Select page"
   >
   </mat-paginator>
-
 
