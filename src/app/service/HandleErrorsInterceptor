@@ -6,30 +6,44 @@ import {
   HttpHandler,
   HttpEvent,
   HttpInterceptor,
-  HttpErrorResponse
+  HttpErrorResponse,HttpClientModule
 } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
+import * as alertify from 'alertifyjs';
 
-@Injectable()
+
+@Injectable({
+ providedIn:'root'
+}
+)
 
 export class HandleErrorsInterceptor implements HttpInterceptor {
 
-    constructor() { }
+    constructor(private alertify:alertify) { }
   
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-      // req=req.clone({headers:req.headers.set("Auth","Bearer"+token)})
-  
-      return next.handle(req).pipe(
-        catchError(
-          (err: HttpErrorResponse|Error)=>{
-            if (err instanceof HttpErrorResponse){
-              console.error('Server side error'+err);
-            } else {
-              console.error('Not a httpErrorResponse'+err);
-            }
-            return throwError(() => err);
-          }
-       )
+     
+      console.log('Http request started');
+      return next.handle(req)
+      .pipe(
+        catchError((error : HttpErrorResponse)=>{
+          const errorMessage=this.setError(error);
+          console.log(error);
+          alertify.error(error.error);
+          return throwError(errorMessage)
+        })
       );
+    }
+    setError(error : HttpErrorResponse):string {
+      let errorMessage ="Unknown error occured";
+      if(error.error instanceof ErrorEvent){
+        errorMessage=error.error.message;
+      }
+      else {
+        if(error.status!=0){
+          errorMessage = error.error.errorMessage;
+        }
+      }
+      return errorMessage
     }
   }

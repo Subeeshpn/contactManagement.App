@@ -1,19 +1,27 @@
-.example-spacer {
-    flex: 1 1 auto;
-  }
-  .mat-elevatio-z8{
-    width: 1200px;
-  }
-  table {
-    width: 100%;
-  }
-  .mat-sort-header-container {
-    align-items: center;
-  }
-  .my-class .mat-dialog-container{
-    height: 400px;
-    width: 600px;
-    border-radius: 10px;
-    background: lightcyan;
-    color: #039be5;
-  }
+table {
+  width: 100%;
+}
+
+table th {
+  position: relative;
+}
+
+table th:hover .resize-handle {
+  opacity: 1;
+  transition: .3s ease-in-out;
+}
+
+.resize-handle {
+  display: inline-block;
+  border-right: 2px solid lightgray;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  cursor: col-resize;
+  opacity: 0;
+}
+
+.resize-handle:hover {
+  width: 20px;
+}

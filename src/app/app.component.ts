@@ -13,10 +13,12 @@ import { HttpClient } from '@angular/common/http';
 import * as alertify from 'alertifyjs';
 import { Inject } from '@angular/core';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  
 })
 export class AppComponent implements OnInit {
   title = 'Contacts App';
