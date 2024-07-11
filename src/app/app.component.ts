@@ -42,8 +42,13 @@ export class AppComponent implements OnInit {
   contactdata!: Contactmodel[];
   finaldata: any;
   openAddEditContactForm() {
-    this._dailog.open(ContactAddEditComponent, {
-      panelClass: 'my-class',
+    const _popup =this._dailog.open(ContactAddEditComponent, {
+      width: '400px',
+      exitAnimationDuration: '1000ms',
+      enterAnimationDuration: '1000ms',
+    });
+    _popup.afterClosed().subscribe((r) => {
+      this.LoadContacts();
     });
   }
 
@@ -57,7 +62,6 @@ export class AppComponent implements OnInit {
       },
     });
     _popup.afterClosed().subscribe((r) => {
-      alert("afterClosed()");
       this.LoadContacts();
     });
   }

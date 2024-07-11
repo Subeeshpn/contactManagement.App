@@ -50,28 +50,26 @@ export class ContactAddEditComponent implements OnInit {
 
   SaveContact() {
     
-    //alert('SaveContact');
+   
     if (this.contactform.valid) {
       const Editid = this.contactform.getRawValue().id;
       if (Editid != '' && Editid != null) {
-        this.api
-          .UpdateContact(Editid, this.contactform.getRawValue())
-          .subscribe((response) => {
+        this.api.UpdateContact(Editid, this.contactform.getRawValue()).subscribe((response) => {
             this.closepopup();
             alertify.success('updated successfully');
           });
       } else {
-        this.api
-        .CreateContact(this.contactform.value)
-        .subscribe((response) => {
+        this.api.CreateContact(this.contactform.value).subscribe((response) => {
           this.closepopup();
           alertify.success('saved successfully');
         });
       }
     }
+    
    }
 
   closepopup() {
     this.dialog.closeAll();
   }
+  
 }
