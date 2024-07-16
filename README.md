@@ -61,6 +61,7 @@ Delete contact
 Sorting contact details
 Paging contact details
 Alert messages
+Searching
 Global Exception messages from angular app
 
 Global Exception: Handled in api side with middleware. error messages are passing to angular application, which handled with the help of an interceptor. Any error both client and server will be handling in interceptor implementation
@@ -68,10 +69,10 @@ Global Exception: Handled in api side with middleware. error messages are passin
 
 How to run the application.
 
-Downoad the source code from github url. https://github.com/SubeeshpnContact app , front ent application open in visual studio code 2022 run in broswer.Contact api project open in visual studio 2022. Load all api in swagger ui.  copy the api address from swagger url like http://localhost:5073/. then paste it in front end angular project's contactapi  service. Location of service  is app/service/contactapi.service.
+Downoad the source code from github url. https://github.com/SubeeshpnContact app , front ent application open in visual studio code 2022 run in broswer.Contact api project open in visual studio 2022. Load all api in swagger ui.  copy the port number from  api url  then paste it in front end angular project's contactapi  service. Location of service  is app/service/contactapi.service.
 
-Assuming data exists database .
-Bug: after adding new contact  , contact listing page is not refreshing. stil fixing.If any doubts contact.
+
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.14.
 

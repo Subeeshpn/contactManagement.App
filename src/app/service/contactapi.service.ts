@@ -15,7 +15,10 @@ export class ContactapiService {
  
   
  // apiUrl variable used to set the api url, according to your url replace 
-  private apiUrl ="http://localhost:5073/api";
+ //***************************** *//
+ // Run .net core Api project copy port number and replace with apiUrl portnumber
+ //***************************** *//
+  private apiUrl ="http://localhost:5073/api"; 
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
