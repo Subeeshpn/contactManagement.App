@@ -11,7 +11,6 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { ContactAddEditComponent } from './contact-add-edit/contact-add-edit.component';
 import { ContactComponent } from './contact/contact.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-//import { HandleErrorsInterceptor } from './service/HandleErrorInterceptor';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatTableModule} from '@angular/material/table';
 import { CommonModule } from "@angular/common";
@@ -48,11 +47,11 @@ import { throwError } from 'rxjs';
   
   ],
   providers: [
-    //{
-    //provide:HTTP_INTERCEPTORS,
-    //useClass: HandleErrorsInterceptor,
-    //multi:true
-  //}
+  //   {
+  //   provide:HTTP_INTERCEPTORS,
+  //   useClass: HandleErrorsInterceptor,
+  //   multi:true
+  // }
   ],
   bootstrap: [AppComponent]
 })

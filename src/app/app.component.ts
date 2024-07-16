@@ -28,14 +28,46 @@ export class AppComponent implements OnInit {
     this.LoadContacts();
   }
 
-  displayColums: string[] = [
-    'id',
-    'firstname',
-    'lastname',
-    'emailid',
-    'Edit',
-    'Delete',
+  // displayColums: string[] = [
+  //   'id',
+  //   'firstname',
+  //   'lastname',
+  //   'emailid',
+  //   'Edit',
+  //   'Delete',
+  // ];
+  columnDefinitions = [
+    { def: "id", label: "ID", visible: false },
+    {
+      def: "firstname",
+      label: "firstname",
+      visible: true
+    },
+    {
+      def: "lastname",
+      label: "lastname",
+      visible: true
+    },
+    {
+      def: "emailid",
+      label: "emailid",
+      visible: true
+    }
+    ,
+    {
+      def: "Edit",
+      label: "Edit",
+      visible: true
+    }
+    ,
+    {
+      def: "Delete",
+      label: "Delete",
+      visible: true
+    }
   ];
+
+  
 
   constructor(private _dailog: MatDialog, private api: ContactapiService) {}
   @ViewChild(MatPaginator) _paginator!: MatPaginator;
@@ -93,5 +125,8 @@ export class AppComponent implements OnInit {
   }
   applyFilter($event : any){
     this.finaldata.filter = $event.target.value;
+  }
+  getDisplayedColumns(): string[] {
+    return this.columnDefinitions.filter(cd => cd.visible).map(cd => cd.def);
   }
 }
