@@ -1,48 +1,30 @@
 {
   "contacts": [
     {
-      "Id": "1",
-      "FirstName": "SACH",
-      "LastName": "sach",
-      "EmailId": "sac@gmail.com",
-      "id": "1"
+      "id": "1",
+      "firstname": "SACH",
+      "lastname": "sach",
+      "emailid": "sac@gmail.com"
+     
     },
     {
       "id": "2",
-      "FirstName": "kichu",
-      "LastName": "kichu1",
-      "EmailId": "kichu@gmail.com"
+      "firstname": "kichu",
+      "lastname": "kichu1",
+      "emailid": "kichu@gmail.com"
     },
     {
       "id": "3",
-      "FirstName": "SACH2",
-      "LastName": "sach2",
-      "EmailId": "sac@gmail.com"
+      "firstname": "SACH2",
+      "lastname": "sach2",
+      "emailid": "sac@gmail.com"
     },
     {
       "id": "4",
-      "FirstName": "kichu2",
-      "LastName": "kichu2",
-      "EmailId": "kichu@gmail.com"
-    },
-    {
-      "id": "01c8",
-      "FirstName": "aaa",
-      "LastName": "aa",
-      "EmailId": "aaa@gs.com"
-    },
-    {
-      "Id": "e646",
-      "FirstName": "dfdf",
-      "LastName": "dfdk",
-      "EmailId": "df@ggg.com",
-      "id": "e646"
-    },
-    {
-      "id": "da00",
-      "FirstName": "aa",
-      "LastName": "aa",
-      "EmailId": "a@gmail.com"
+      "firstname": "kichu2",
+      "lastname": "kichu2",
+      "emailid": "kichu@gmail.com"
     }
+    
   ]
 }

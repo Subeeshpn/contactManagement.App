@@ -13,6 +13,7 @@ import { HttpClient } from '@angular/common/http';
 import * as alertify from 'alertifyjs';
 import { Inject } from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @Component({
   selector: 'app-root',
@@ -89,5 +90,8 @@ export class AppComponent implements OnInit {
       },
       function () {}
     );
+  }
+  applyFilter($event : any){
+    this.finaldata.filter = $event.target.value;
   }
 }

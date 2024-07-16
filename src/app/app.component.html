@@ -6,6 +6,10 @@
 
   <br />
   <div>
+        <mat-form-field appearance="fill">
+          <input  matInput placeholder="search" (keyup)="applyFilter($event)">
+        </mat-form-field>
+
     <a mat-raised-button color="primary" (click)="openAddEditContactForm()">New </a>
   </div>
   <br />
