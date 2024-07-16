@@ -14,9 +14,9 @@ import { map } from 'rxjs/operators';
 export class ContactapiService {
  
   
- // apiUrl variable used to set the api url, according to your url replace 
+
  //***************************** *//
- // Run .net core Api project copy port number and replace with apiUrl portnumber
+ // Run .net core Api project copy port number and replace with apiUrl port number
  //***************************** *//
   private apiUrl ="http://localhost:5073/api"; 
   httpOptions = {

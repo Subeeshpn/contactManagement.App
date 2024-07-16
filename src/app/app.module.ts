@@ -47,9 +47,9 @@ import { throwError } from 'rxjs';
   
   ],
   providers: [
-  //   {
+  //   { 
   //   provide:HTTP_INTERCEPTORS,
-  //   useClass: HandleErrorsInterceptor,
+  //   useClass:HandleErrorsInterceptor,
   //   multi:true
   // }
   ],
