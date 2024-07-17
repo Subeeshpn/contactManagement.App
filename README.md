@@ -1,33 +1,53 @@
 # ContactManagementApp
 
+About the project 
+=========================
+Contact management application help to users can handle contact details  with this application.There are wo projects are part of the application API , Front end applications. Backend Api is developed with .net core web api 8. Crud operations implemented in api.Other software engineering practices applied in api's are Solid principles and design patterns. and contact management front end application is developed on Angular 16,  has crud operations with search, paging and sorting implementations used angular materal ui for designing the fronend. Contact's application  features are used with apiservices, components, modules, material ui,reactive forms, form validation,error handling with Interceptor, Alertify messaging system.
+ 
+Setup instructions
+===========================
 
-About project : 
+In order to run the application install below software are in your system
 
-How to setup environment
-how to configure the project for run
-
-Environments and tools 
 Node :v20.15.0
 NPM :10.7.0
 Angular cli : 16.2.14
-Angular material : Designed the UI 
-json.server   : local debugging and testing 
-alertify js used for alert messaging
-
-Tools
-Visual studio 2022visual studio codeMS test. Mock, Autofixure
+Angular material : 
+json.server   : 
+alertify js 
+Visual studio 2022
+visual studio code
 Swagger ui
+Moq
 
-Project Details : Contact management application. Source code available in github repository. Tried to implement maximum features.
+How to run the application
+============================
 
-Two projects created API , Front end
-Backend .net core api : Dotnet core api is designed with repository pattern. 
+Downoad the source code from github url. https://github.com/SubeeshpnContact app , front ent application open in visual studio code 2022 run in broswer.Contact api project open in visual studio 2022. Load all api in swagger ui.  copy the port number from  api url  then paste it in front end angular project's contactapi  service. Location of service  is app/service/contactapi.service.
 
-This api is divided in to repository layer, domain layer, api controller layer. so separation of concern achieved. 
 
-Decision for the architecture
+Application structure and Design
+===============================
 
-Future enhancement become easier by following DI of Solid principles, Repositori patterns helps to organize implementations seperately for business logic and db logics. by desinging Api proect helps to consume the services with any type clients.
+Application mainly divident into two parts. Frontend application and backend api's. In a server web-client approach, the server-side application code is kept completely separate from the client code.So Api endpoints are able to share with multiple applications and different clients can consume.
+
+For the client, we can create an app using the Angular CLI. The server-side application has a clear responsibility to provide API endpoints while the client-side of the application strictly handles the user interface.
+
+This api is divided in to repository layer, domain layer, api controller layer. so separation of concern achieved. Future enhancement become easier by following DI of Solid principles, Repositori patterns helps to organize implementations seperately for business logic and db logics. by desinging Api proect helps to consume the services with any type clients.
+
+Domain Layer:
+
+Domain Entity objects are a representation of the database that we are using to store and retrieve data used for the API business logic. Each Entity object will contain the properties represented in our case the SQL table in our case json file.
+ 
+Data Layer:
+
+The next layer of the API architecture we will look at is the Data Layer.The key to the Data Layer is the implementation of each entity repository using the interfaces developed in the Domain Layer. The architecture we are developing for the API uses the Repository Pattern for connecting the API Layer to the Data Layer. Thisis done using Dependency Injection for each of the repository objects we implement.
+
+API Layer:
+
+This layer contains the code for the Web API endpoint logic including the Controllers. The API project for the solution will have a single responsibility, andthat is only to handlethe HTTP requests received by the web server and to return the HTTP responses with either success or failure. There will be a very minimal business logic in this project. We will handle exceptions and errors that have occurred in the Domain or Data projects to effectively communicate with the consumer of APIs. This communication will use HTTP response codes and any data to be returned located in the HTTP response body.
+
+Below listed feature added with api
 
 Dependency injection applied with api. 
 
@@ -37,39 +57,26 @@ Logging implemented with Nloger.
 
 Global exception handled with middleware. 
 
-This api's can improve with unit of work, generic repository. But as of now no scope for using. Also async not used so  , by using asyn api's , performance again can scale.
 
-angular front end application : crud operations with paging and sorting implemented used angular materal ui for designing the fronend.  But still filtering , input/output/state management not applied. But i not followed input/output/state management Contact's app designed with apiservices, components, modules, material ui, reactive forms, form validation
+Performance Considerations:
+==============================
+Always web API is to design with scalability in mind. This means following the principles of RESTful architecture, such as using standard HTTP methods, status codes, and headers, providing clear and consistent endpoints and resources, and supporting content negotiation and caching. You should also use a versioning strategy for your web API.
 
-jasmin , karma, used for angulr fronend unit testing.
+Another way of scaling your web API is to implement load balancing and horizontal scaling. Load balancing is the process of distributing the incoming requests to your web API across multiple servers or instances, to avoid overloading any single server and improve availability and performance. Horizontal scaling is the process of adding more servers, to increase the capacity and throughput of your web API
 
-Database is using json file :assumption is database has contact details available. I mean empty scenarios not handled.
+Optimize your web API performance means reducing the latency and bandwidth of your web API responses, by applying various optimization techniques, such as compression, minification, pagination, filtering, sorting, and caching.You should also monitor and measure your web API performance, by using tools and metrics, such as response time, error rate, throughput, and availability. You should also implement logging and error handling for your web API 
 
-Unit testing both Api and front end  but not covered all scenarios
+Use Async versions of methods whenever possible.Secure your web API,Optimize data access,Handling Errors Globally,Using DTOs to Return Results and Accept Inputs. By following all points, any number of contacts would be handled by application.
 
-MS test. Mock, Autofixure used for api repository testing Integration test not implemented.
-
-Branching strategy main branch and development branch.Api unit test:
-
-Functionalities competed:
-
-Add new contact
-Load all contact
-Load Contact by id
-Update contact
-Delete contact
-Sorting contact details
-Paging contact details
-Alert messages
-Searching
-Global Exception messages from angular app
-
-Global Exception: Handled in api side with middleware. error messages are passing to angular application, which handled with the help of an interceptor. Any error both client and server will be handling in interceptor implementation
+Current architecture following SOLID Principles, Design patterns, oops , excemption handling. Changing data 
+==============================
+source to any of the rdbms is easily with current architecture. Because of following the proper architecture contact management application could be easily maintainable and sclable in future.
 
 
-How to run the application.
 
-Downoad the source code from github url. https://github.com/SubeeshpnContact app , front ent application open in visual studio code 2022 run in broswer.Contact api project open in visual studio 2022. Load all api in swagger ui.  copy the port number from  api url  then paste it in front end angular project's contactapi  service. Location of service  is app/service/contactapi.service.
+
+
+
 
 
 
