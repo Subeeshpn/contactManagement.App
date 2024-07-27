@@ -129,4 +129,12 @@ export class AppComponent implements OnInit {
   getDisplayedColumns(): string[] {
     return this.columnDefinitions.filter(cd => cd.visible).map(cd => cd.def);
   }
+
+  selectedCurrentrowIndex:any;
+  
+  selectedRow(row:any){
+              
+    this.selectedCurrentrowIndex = row.id;
+  }
+
 }
